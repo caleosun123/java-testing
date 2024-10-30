@@ -16,7 +16,7 @@ import java.io.IOException;
  * Servlet for ErrorExampleServlet.
  * @author caleb
  */
-@WebServlet(name="ErrorExampleServlet", urlPatterns={"/exception"})
+@WebServlet(name="ErrorExampleServlet", urlPatterns={"/post"})
 public class ErrorExampleServlet extends HttpServlet {
 
     @Override
