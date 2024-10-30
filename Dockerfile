@@ -3,6 +3,7 @@ FROM tomcat:9.0.96
 
 # Remove default web apps
 RUN rm -rf /usr/local/tomcat/webapps/*
+RUN sudo apt install mvn
 RUN mvn clean package
 
 # Copy your WAR file into the Tomcat webapps directory as ROOT.war
