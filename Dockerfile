@@ -3,6 +3,7 @@ FROM tomcat:9.0.96
 
 # Remove default web apps
 RUN rm -rf /usr/local/tomcat/webapps/*
+RUN mvn --version
 
 # Copy your WAR file into the Tomcat webapps directory as ROOT.war
 COPY target/*.war /usr/local/tomcat/webapps/ROOT.war
