@@ -1,14 +1,14 @@
-# Use the official OpenJDK base image
-FROM openjdk:11-jre-slim
+# Use the official Tomcat base image
+FROM tomcat:9.0.96
 
-# Set the working directory
-WORKDIR /app
+# Remove default web apps (optional if you have your own app)
+RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy the JAR file from the target directory to the app directory
-COPY target/*.jar app.jar
+# Copy your WAR file into the Tomcat webapps directory
+COPY target/*.war /usr/local/tomcat/webapps/app.war
 
-# Expose the port the app runs on (replace 8080 with your app's port if different)
+# Expose the port Tomcat is running on
 EXPOSE 8080
 
-# Command to run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Start Tomcat (this is done by default in the base image)
+CMD ["catalina.sh", "run"]
